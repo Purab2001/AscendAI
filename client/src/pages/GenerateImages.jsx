@@ -44,7 +44,7 @@ const GenerateImages = () => {
       {/* Left col */}
       <form onSubmit={onSubmitHandler} className='w-full max-w-lg p-4 bg-white rounded-lg border border-gray-200'>
         <div className='flex items-center gap-3'>
-          <Sparkles className='w-6 text-[#00AD25]' />
+          <Sparkles className='w-6 text-green-600' />
           <h1>AI Image Generator</h1>
         </div>
         <p className='mt-6 text-sm font-medium'>Describe Your Image</p>
@@ -56,7 +56,7 @@ const GenerateImages = () => {
         <div className='mt-3 flex gap-3 flex-wrap sm:max-w-9/11'>
           {imageStyle.map((item) => (
             <span onClick={() => setSelectedStyle(item)}
-              className={`text-xs px-4 py-1 border rounded-full cursor-pointer ${selectedStyle === item ? 'bg-green-50 text-green-700' : 'text-gray-500 border-gray-300'}`} key={item}>{item}</span>
+              className={`text-xs px-4 py-1 border rounded-full cursor-pointer ${selectedStyle === item ? 'bg-green-50 text-green-600' : 'text-gray-500 border-gray-300'}`} key={item}>{item}</span>
           ))}
         </div>
 
@@ -71,7 +71,7 @@ const GenerateImages = () => {
           <p className='text-sm'>Make this image public</p>
         </div>
 
-        <button disabled={loading} className='w-full flex justify-center items-center gap-2 bg-linear-to-r from-[#00AD25] to-[#04FF50] text-white px-4 py-2 mt-6 text-sm rounded-lg cursor-pointer'>
+        <button disabled={loading} className='w-full flex justify-center items-center gap-2 bg-green-600 text-white px-4 py-2 mt-6 text-sm rounded-lg cursor-pointer'>
           {loading ? <span className='w-4 h-4 my-1 rounded-full border-2 border-t-transparent animate-spin'></span> : <Image className='w-5' />}
           Generate Image
         </button>
@@ -80,7 +80,7 @@ const GenerateImages = () => {
       <div className='w-full max-w-lg p-4 bg-white rounded-lg flex flex-col border border-gray-200 min-h-96'>
 
         <div className='flex items-center gap-3'>
-          <Image className='w-5 h-5 text-[#00AD25]' />
+          <Image className='w-5 h-5 text-green-600' />
           <h1 className='text-xl font-semibold'>Generated image</h1>
         </div>
         {

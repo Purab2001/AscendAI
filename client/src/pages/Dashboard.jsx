@@ -67,7 +67,7 @@ const Dashboard = () => {
       {
         loading ? (
           <div className='flex justify-center items-center h-3/4'>
-            <div className='animate-spin rounded-full h-11 w-11 border-3 border-purple-500 border-t-transparent'></div>
+            <div className='animate-spin rounded-full h-11 w-11 border-3 border-primary border-t-transparent'></div>
           </div>
         ) : (
           <div className='space-y-3'>
