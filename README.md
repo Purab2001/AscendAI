@@ -345,32 +345,6 @@ Configure environment variables in Vercel dashboard.
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-## 📧 Contact
-
-**Purab** - [@Purab2001](https://github.com/Purab2001)
-
-Project Link: [https://github.com/Purab2001/AscendAI](https://github.com/Purab2001/AscendAI)
-
----
-
 <div align="center">
 
 ### Made with ❤️ by [Purab](https://github.com/Purab2001)
