@@ -6,7 +6,7 @@
 
 _Elevate your content creation with intelligent AI tools for writing, image generation, and document analysis._
 
-[![🔥 LIVE](https://img.shields.io/badge/🔥-ASCENDAI-red?style=for-the-badge)](#)
+[![🔥 LIVE](https://img.shields.io/badge/🔥-ASCENDAI-red?style=for-the-badge)](https://ascend-ai-2025.vercel.app/)
 [![⚛️ REACT](https://img.shields.io/badge/⚛️-REACT-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![19.1.1](https://img.shields.io/badge/19.1.1-blue?style=for-the-badge)](https://reactjs.org/)
 [![⚡ VITE](https://img.shields.io/badge/⚡-VITE-purple?style=for-the-badge&logo=vite)](https://vitejs.dev/)
@@ -48,12 +48,12 @@ _Elevate your content creation with intelligent AI tools for writing, image gene
 
 <table>
   <tr>
+    <td align="center"><b>Home</b></td>
     <td align="center"><b>Dashboard</b></td>
-    <td align="center"><b>AI Tools</b></td>
   </tr>
   <tr>
-    <td><img src="public/screenshot-home.png" alt="Dashboard" height="300"></td>
-    <td><img src="public/screenshot-dashboard.png" alt="AI Tools" height="300"></td>
+    <td><img src="./client/public/screenshot-home.png" alt="Home" height="300"></td>
+    <td><img src="./client/public/screenshot-dashboard.png" alt="Dashboard" height="300"></td>
   </tr>
 </table>
 
