@@ -52,8 +52,8 @@ _Elevate your content creation with intelligent AI tools for writing, image gene
     <td align="center"><b>Dashboard</b></td>
   </tr>
   <tr>
-    <td><img src="./client/public/screenshot-home.png" alt="Home" height="300"></td>
-    <td><img src="./client/public/screenshot-dashboard.png" alt="Dashboard" height="300"></td>
+    <td><img src="./client/public/screenshot-home.webp" alt="Home" height="300"></td>
+    <td><img src="./client/public/screenshot-dashboard.webp" alt="Dashboard" height="300"></td>
   </tr>
 </table>
 
