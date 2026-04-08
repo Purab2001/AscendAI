@@ -37,43 +37,59 @@ const Dashboard = () => {
   }, [])
 
   return (
-    <div className='h-full overflow-y-scroll p-6'>
-      <div className='flex justify-start gap-4 flex-wrap'>
+    <div className='h-full overflow-y-scroll p-6 sm:p-8'>
+      <div className='mb-8'>
+        <h1 className='text-3xl font-bold text-gray-900 mb-2'>Dashboard</h1>
+        <p className='text-gray-600'>Overview of your creative work</p>
+      </div>
+
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mb-8'>
 
         {/* Total Creations Card */}
-        <div className='flex justify-between items-center w-72 p-4 px-6 bg-white rounded-xl border border-gray-200'>
-          <div className='text-slate-600'>
-            <p className='text-sm'>Total Creations</p>
-            <h2 className='text-xl font-semibold'>{creations.length}</h2>
+        <div className='flex justify-between items-center p-6 bg-white rounded-2xl border border-gray-200 hover:shadow-lg hover:shadow-primary/5 transition-all'>
+          <div className='text-gray-700'>
+            <p className='text-sm text-gray-600 font-medium mb-1'>Total Creations</p>
+            <h2 className='text-3xl font-bold text-gray-900'>{creations.length}</h2>
           </div>
-          <div className='w-10 h-10 rounded-lg bg-linear-to-br from-[#3588F2] to-[#0BB0D7] text-white flex justify-center items-center'>
-            <Sparkles className='w-5 text-white' />
+          <div className='w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-accent text-white flex justify-center items-center shadow-lg shadow-primary/20'>
+            <Sparkles className='w-7 h-7 text-white' />
           </div>
         </div>
+
         {/* Active Plan Card */}
-        <div className='flex justify-between items-center w-72 p-4 px-6 bg-white rounded-xl border border-gray-200'>
-          <div className='text-slate-600'>
-            <p className='text-sm'>Active Plan</p>
-            <h2 className='text-xl font-semibold'>
+        <div className='flex justify-between items-center p-6 bg-white rounded-2xl border border-gray-200 hover:shadow-lg hover:shadow-purple-500/5 transition-all'>
+          <div className='text-gray-700'>
+            <p className='text-sm text-gray-600 font-medium mb-1'>Active Plan</p>
+            <h2 className='text-3xl font-bold text-gray-900'>
               <Protect plan='pro' fallback='Free'>Pro</Protect>
             </h2>
           </div>
-          <div className='w-10 h-10 rounded-lg bg-linear-to-br from-[#FF61C5] to-[#9E53EE] text-white flex justify-center items-center'>
-            <Gem className='w-5 text-white' />
+          <div className='w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white flex justify-center items-center shadow-lg shadow-purple-500/20'>
+            <Gem className='w-7 h-7 text-white' />
           </div>
         </div>
 
       </div>
       {
         loading ? (
-          <div className='flex justify-center items-center h-3/4'>
-            <div className='animate-spin rounded-full h-11 w-11 border-3 border-primary border-t-transparent'></div>
+          <div className='flex justify-center items-center h-96'>
+            <div className='animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent'></div>
           </div>
         ) : (
-          <div className='space-y-3'>
-            <p className='mt-6 mb-4'>Recent Creations</p>
+          <div className='space-y-4'>
+            <div className='flex items-center justify-between mb-4'>
+              <h2 className='text-xl font-semibold text-gray-900'>Recent Creations</h2>
+              <span className='text-sm text-gray-600'>{creations.length} total</span>
+            </div>
             {
-              creations.map((item) => <CreationItem key={item.id} item={item} />)
+              creations.length > 0 ? (
+                creations.map((item) => <CreationItem key={item.id} item={item} />)
+              ) : (
+                <div className='bg-white rounded-2xl border border-gray-200 p-12 text-center'>
+                  <Sparkles className='w-12 h-12 text-gray-300 mx-auto mb-4' />
+                  <p className='text-gray-600'>No creations yet. Start creating something amazing!</p>
+                </div>
+              )
             }
           </div>
         )

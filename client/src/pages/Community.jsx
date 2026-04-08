@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useUser } from '@clerk/clerk-react'
-import { Heart } from 'lucide-react'
+import { Heart, Users } from 'lucide-react'
 import axios from 'axios'
 import { useAuth } from '@clerk/clerk-react'
 import toast from 'react-hot-toast'
@@ -55,27 +55,61 @@ const Community = () => {
   }, [user])
 
   return !loading ? (
-    <div className='flex-1 h-full flex flex-col gap-4 p-6'>
-      Creations
-      <div className='bg-white h-full w-full rounded-xl overflow-y-scroll'>
-        {creations.map((creation, index) => (
-          <div key={index} className='relative group inline-block pl-3 pt-3 w-full sm:max-w-1/2 lg:max-w-1/3'>
-            <img src={creation.content} alt="" className='w-full h-full object-cover rounded-lg' />
+    <div className='h-full flex flex-col p-6 sm:p-8'>
+      <div className='mb-8'>
+        <h1 className='text-3xl font-bold text-gray-900 mb-2'>Community Gallery</h1>
+        <p className='text-gray-600'>Explore amazing creations from our community</p>
+      </div>
 
-            <div className='absolute bottom-0 top-0 right-0 left-3 flex gap-2 items-end justify-end group-hover:justify-between p-3 group-hover:bg-linear-to-b from-transparent to-black/80 text-white rounded-lg'>
-              <p className='text-sm hidden group-hover:block'>{creation.prompt}</p>
-              <div className='flex gap-1 items-center'>
-                <p>{creation.likes.length}</p>
-                <Heart onClick={() => imageLikeToggle(creation.id)} className={`min-w-5 h-5 hover:scale-110 cursor-pointer ${creation.likes.includes(user.id) ? 'fill-red-500 text-red-600' : 'text-white'}`} />
+      <div className='bg-white h-full rounded-2xl border border-gray-200 overflow-hidden'>
+        <div className='h-full overflow-y-scroll p-4'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
+            {creations.length > 0 ? (
+              creations.map((creation, index) => (
+                <div key={index} className='relative group overflow-hidden rounded-xl bg-gray-100 aspect-square'>
+                  <img
+                    src={creation.content}
+                    alt={creation.prompt}
+                    className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105'
+                  />
+
+                  <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4'>
+                    <p className='text-white text-sm mb-3 line-clamp-2'>{creation.prompt}</p>
+                    <div className='flex items-center justify-between'>
+                      <div className='flex items-center gap-2'>
+                        <Heart
+                          onClick={() => imageLikeToggle(creation.id)}
+                          className={`w-5 h-5 cursor-pointer transition-all hover:scale-110 ${creation.likes.includes(user.id) ? 'fill-red-500 text-red-500' : 'text-white'}`}
+                        />
+                        <span className='text-white text-sm font-medium'>{creation.likes.length}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Like button visible on mobile */}
+                  <div className='absolute bottom-3 right-3 sm:hidden flex items-center gap-1.5 bg-black/60 backdrop-blur-sm rounded-full px-3 py-1.5'>
+                    <span className='text-white text-xs font-medium'>{creation.likes.length}</span>
+                    <Heart
+                      onClick={() => imageLikeToggle(creation.id)}
+                      className={`w-4 h-4 cursor-pointer ${creation.likes.includes(user.id) ? 'fill-red-500 text-red-500' : 'text-white'}`}
+                    />
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className='col-span-full flex flex-col items-center justify-center py-20'>
+                <Users className='w-16 h-16 text-gray-300 mb-4' />
+                <p className='text-gray-600 text-lg font-medium'>No public creations yet</p>
+                <p className='text-gray-500 text-sm'>Be the first to share your creation!</p>
               </div>
-            </div>
+            )}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   ) : (
     <div className='flex justify-center items-center h-full'>
-      <span className='w-10 h-10 my-1 rounded-full border-3 border-primary border-t-transparent animate-spin'></span>
+      <div className='animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent'></div>
     </div>
   )
 }

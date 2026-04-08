@@ -6,7 +6,7 @@ import { NavLink } from 'react-router';
 const navItems = [
   { to: '/ai', label: 'Dashboard', Icon: House },
   { to: '/ai/write-article', label: 'Write Articles', Icon: SquarePen },
-  { to: '/ai/blog-titles', label: 'Blog Titles', Icon: House },
+  { to: '/ai/blog-titles', label: 'Blog Titles', Icon: Hash },
   { to: '/ai/generate-images', label: 'Generate Images', Icon: Image },
   { to: '/ai/remove-background', label: 'Remove Background', Icon: Eraser },
   { to: '/ai/remove-object', label: 'Remove Object', Icon: Scissors },
@@ -20,16 +20,19 @@ const Sidebar = ({ sidebar, setSidebar }) => {
   const { signOut, openUserProfile } = useClerk();
 
   return (
-    <div className={`w-60 bg-white border-r border-gray-200 flex flex-col justify-between items-center max-sm:absolute max-sm:z-50 top-14 bottom-0 ${sidebar ? 'translate-x-0' : 'max-sm:-translate-x-full'} transition-all duration-300 ease-in-out`}>
-      <div className='my-7 w-full'>
-        <img src={user.imageUrl} alt="User avatar" className='w-13 rounded-full mx-auto' />
-        <h1 className='mt-1 text-center'>{user.fullName}</h1>
-        <div className='px-6 mt-5 text-sm text-gray-600 font-medium'>
-          {navItems.map(({ to, label, Icon }) => (
-            <NavLink key={to} to={to} end={to === '/ai'} onClick={() => setSidebar(false)} className={({ isActive }) => `px-3.5 py-2.5 flex items-center gap-3 rounded ${isActive ? 'bg-primary text-white' : ''}`}>
+    <div className={`w-60 bg-white border-r border-gray-200 flex flex-col justify-between items-center max-sm:absolute max-sm:z-50 top-16 bottom-0 shadow-lg max-sm:shadow-xl ${sidebar ? 'translate-x-0' : 'max-sm:-translate-x-full'} transition-all duration-300 ease-in-out`}>
+      <div className='my-6 w-full'>
+        <div className='px-6 mb-4'>
+          <img src={user.imageUrl} alt="User avatar" className='w-14 h-14 rounded-full mx-auto ring-4 ring-primary/10' />
+          <h1 className='mt-2 text-center font-semibold text-gray-900'>{user.fullName}</h1>
+        </div>
+        <div className='px-3 mt-4 text-sm font-medium'>
+          {/* eslint-disable-next-line no-unused-vars */}
+          {navItems.map(({ to, label, Icon: IconComponent }) => (
+            <NavLink key={to} to={to} end={to === '/ai'} onClick={() => setSidebar(false)} className={({ isActive }) => `px-4 py-2.5 mb-1 flex items-center gap-2.5 rounded-lg transition-all ${isActive ? 'bg-primary text-white shadow-md shadow-primary/20' : 'text-gray-700 hover:bg-gray-100'}`}>
               {({ isActive }) => (
                 <>
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-white' : ''}`} />
+                  <IconComponent className={`w-4 h-4 shrink-0 ${isActive ? 'text-white' : 'text-gray-600'}`} />
                   {label}
                 </>
               )}
@@ -38,18 +41,19 @@ const Sidebar = ({ sidebar, setSidebar }) => {
         </div>
       </div>
 
-      <div className='w-full border-t border-gray-200 p-4 px-7 flex items-center justify-between'>
-        <div onClick={openUserProfile} className='flex gap-2 items-center cursor-pointer'>
-          <img src={user.imageUrl} alt="" className='w-8 rounded-full' />
-          <div>
-            <h1 className='text-xs font-medium'>{user.fullName}</h1>
-            <p className='text-xs text-gray-500'>
-              <Protect plan='pro' fallback='Free'>Pro</Protect>
-              Plan
-            </p>
+      <div className='w-full border-t border-gray-200 p-3 px-4 bg-gray-50'>
+        <div className='flex items-center justify-between'>
+          <div onClick={openUserProfile} className='flex gap-3 items-center cursor-pointer flex-1'>
+            <img src={user.imageUrl} alt="" className='w-9 h-9 rounded-full ring-2 ring-gray-200' />
+            <div>
+              <h1 className='text-sm font-semibold text-gray-900'>{user.fullName}</h1>
+              <p className='text-xs text-gray-600'>
+                <Protect plan='pro' fallback='Free'>Pro</Protect> Plan
+              </p>
+            </div>
           </div>
+          <LogOut onClick={signOut} className='w-5 h-5 text-gray-500 hover:text-red-500 transition cursor-pointer shrink-0' />
         </div>
-        <LogOut onClick={signOut} className='w-4.5 text-gray-400 hover:text-gray-700 transition cursor-pointer' />
       </div>
 
     </div>
